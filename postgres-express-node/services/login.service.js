@@ -35,7 +35,6 @@ class LoginService {
         role: userRecord.role || "guest",
       };
 
-      //
       const payload = {
         ...user,
         aud: config.jwt.audience || "localhost/api", //za koga je namjenjen token

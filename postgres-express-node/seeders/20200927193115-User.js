@@ -5,7 +5,7 @@ module.exports = {
       [
         {
           username: "john",
-          password: "password",
+          password: "$2a$12$f1ok0/kir7fzIjxtnxYbCumgma0grzS0gWE6o0aeZRz.9.siVqBsG",
           createdAt: new Date(),
           updatedAt: new Date(),
         },
