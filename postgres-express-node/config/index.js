@@ -28,7 +28,17 @@ module.exports = {
   },
   //ovo sadrzi JWT token
   jwt:{
+    //konfiguracijski parametri
     secret: process.env.JWT_SECRET,
     expiresIn: process.env.JWT_DURATION || "1h",
-  }
+    algorithms: ["HS256"], //algoritam za potpisivanje tokena
+    exclude :{ // da bi se mogli ukljuciti na path, da ne trazi token za druge path-ove
+      path:[
+        {
+          url:"/api/login",
+          methods:["POST"],
+        },
+      ],
+    },
+  },
 };

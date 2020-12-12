@@ -1,4 +1,4 @@
-const jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken"); //modul za generiranje tokena
 const config = require("../config");
 
 //definira se klasa LoginService
@@ -40,10 +40,12 @@ class LoginService {
       };
       //stvaranje tokena
       const token = this.generateToken(payload); 
-      return{user,token};
+
+      return{user,token}; 
     }
 
     //ako lozinka nije tocna
+    this.logger.error("Invalid password");
     throw new Error("Authentification failed");
   }
 
