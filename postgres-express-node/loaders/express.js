@@ -39,6 +39,11 @@ module.exports = ({ app, HttpLogger: logger }) => {
 
   // ultimate error handler
   app.use((err, req, res, next) => {
+    if (err.name === "UnauthorizedError"){
+      err.status= 401;
+      err.message = "Not authorized (invalid token)";
+    }
+
     res.status(err.status || 500).json({
       error: {
         message: err.message || "Internal Server Error",
