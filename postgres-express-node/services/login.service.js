@@ -1,3 +1,4 @@
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken"); //modul za generiranje tokena
 const config = require("../config");
 
@@ -23,7 +24,10 @@ class LoginService {
 
     //ako korisnik postoji
     this.logger.info("Checking password"); 
-    if(userRecord.password === password){
+    const validPassword = await bcrypt.compare(password, userRecord.password);
+
+    //if(userRecord.password === password)  nesigurna usporedba
+    if(validPassword){
       this.logger.info("Password correct, proceed and generate JWT"); //biljezenje u logu uspjesnu autentifikaciju
 
       const user ={
